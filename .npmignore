@@ -1,0 +1,6 @@
+js/*
+node_modules/*
+.DS_Store
+.gitignore
+.travis.yml
+index.html

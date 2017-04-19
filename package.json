@@ -1,0 +1,29 @@
+{
+  "name": "import.js",
+  "version": "0.0.0",
+  "description": "A dynamic import() polyfill",
+  "main": "min.js",
+  "scripts": {
+    "build": "npm run minify && npm run size",
+    "minify": "echo '/*! (C) Andrea Giammarchi, ISC License */' > ./min.js; uglifyjs -mc warnings=false ./import.js >> ./min.js",
+    "size": "cat import.js | wc -c;cat min.js | wc -c;gzip -c min.js | wc -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebReflection/import.js.git"
+  },
+  "keywords": [
+    "import",
+    "dynamic",
+    "polyfill"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebReflection/import.js/issues"
+  },
+  "homepage": "https://github.com/WebReflection/import.js#readme",
+  "devDependencies": {
+    "uglify-js": "^2.8.22"
+  }
+}
