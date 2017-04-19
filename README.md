@@ -29,3 +29,5 @@ A dynamic [import()](https://tc39.github.io/proposal-dynamic-import/) polyfill.
   * however, you can add any polyfill you need upfront
 
 Use `https://unpkg.com/import.js@latest` as source if you'd like to use a CDN service.
+
+[Live test](https://webreflection.github.io/import.js/) based on [this folder](https://github.com/WebReflection/import.js/tree/master/js).
