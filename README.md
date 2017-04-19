@@ -17,7 +17,7 @@ A dynamic [import()](https://tc39.github.io/proposal-dynamic-import/) polyfill.
 <!-- literally anything you need before -->
 <script
     async
-    src="/import.js"
+    src="import.js"
     data-main="js/main.js"
 ></script>
 ```
