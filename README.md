@@ -31,3 +31,5 @@ A dynamic [import()](https://tc39.github.io/proposal-dynamic-import/) polyfill.
 Use `https://unpkg.com/import.js@latest` as source if you'd like to use a CDN service.
 
 [Live test](https://webreflection.github.io/import.js/) based on [this folder](https://github.com/WebReflection/import.js/tree/master/js).
+
+You can test [native ES2015 module export](https://webreflection.github.io/import.js/?native) too. It requires a compatible browser (today any modern WebKit would do).
