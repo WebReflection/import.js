@@ -82,17 +82,17 @@
               exported = [];
               exec(create('module'), 'const ' +
               importer + '=' + dynamic + '(self.' + importer + ',' + path + ');' +
-              'let __import__default;\n' +
+              'let ' + importer + 'default;\n' +
                 textContent.replace(
                   /^export\s+(default\s+)?([^=({;]+)/gm,
                   function ($0, $1, $2) {
                     name = $2.replace(/^[a-z]+\s(\S+)[\s\S]*$/, '$1') || $2;
                     if ($1) {
                       if (/^(?:class|function)\s*$/.test(name)) {
-                        name = '__import__' + (i++);
+                        name = importer + (i++);
                         $0 = $0.replace($2, $2 + ' ' + name);
                       } else if (/^new\s/.test($2)) {
-                        name = '__import__default';
+                        name = importer + 'default';
                         $0 = $0.replace($2, name + '=' + $2);
                       }
                       exported.push('default:' + name);
