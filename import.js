@@ -65,6 +65,7 @@
               textContent = xhr.responseText.replace(re, place),
               nativeModule = /^(?:export|import)\s/m.test(textContent),
               importer = '__import__',
+              resolver = importer + 'r' + info.i++,
               i = 0,
               exported,
               name
@@ -72,13 +73,16 @@
             textContent = textContent
               .replace(/(^|[^._a-zA-Z0-9$])import\(/g, '$1' + importer + '(')
               .replace(re, vert);
-            __import__.p = path;
-            __import__.r = resolve;
+            self[resolver] = function (m) {
+              delete self[resolver];
+              resolve(m);
+            };
+            path = JSON.stringify(path);
             if (nativeModule) {
               exported = [];
               exec(create('module'), 'const ' +
-              importer + '=' + info.i + '(self.' + importer + ');' +
-              importer + '.r=self.' + importer + '.r;let __import__default;\n' +
+              importer + '=' + dynamic + '(self.' + importer + ',' + path + ');' +
+              'let __import__default;\n' +
                 textContent.replace(
                   /^export\s+(default\s+)?([^=({;]+)/gm,
                   function ($0, $1, $2) {
@@ -103,14 +107,14 @@
                     return $0;
                   }
                 ) +
-                ';\n' + importer + '.r({' + exported.join(',') + '})');
+                ';\n' + resolver + '({' + exported.join(',') + '})');
             } else {
               // irony wants that's way easier to implement `import`
               // on transpiled ES5 engines
-              exec(create(''), importer + '.r(function(exports,' +
+              exec(create(''), resolver + '(function(exports,' +
               importer + '){"use strict";' +
               'return function(){' + textContent +
-              ';\n}(),exports}({},' + info.i + '(' + importer + ')))');
+              ';\n}(),exports}({},' + dynamic + '(' + importer + ',' + path + ')))');
             }
           };
           xhr.send(null);
@@ -129,12 +133,13 @@
       html.appendChild(script);
     },
     pathname = location.pathname,
-    fileName = info.p || getMain(script.getAttribute('data-main')),
+    fileName = typeof script === 'string' ?
+                script : getMain(script.getAttribute('data-main')),
     html = document.documentElement
   ;
   if (!__import__.m) {
       info.m = Object.create(null);
-      info.i = '' + dynamic;
+      info.i = 0;
       info.n = script.getAttribute('nonce');
       load(normalize(fileName));
   }
