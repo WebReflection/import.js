@@ -1,6 +1,8 @@
 # import.js
 A dynamic [import()](https://tc39.github.io/proposal-dynamic-import/) polyfill.
 
+Don't miss the [related blog post](https://twitter.com/WebReflection/status/856137076852621312).
+
 ### Features
 
   - [x] compatible with **native ES2015** modules
