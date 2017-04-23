@@ -1,6 +1,6 @@
 // asynchronous module c.js
 
-import {default as imports} from './imports.js';
+import imports from './imports.js';
 
 // soon not needed anymore
 import * as moduleA from './a.js';

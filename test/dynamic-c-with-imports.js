@@ -1,6 +1,6 @@
 // asynchronous module c.js
 
-import {default as imports} from './imports.js';
+import imports from './imports.js';
 
 // same pattern in export
 export default new Promise(async $export => {
