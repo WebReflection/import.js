@@ -1,4 +1,7 @@
 # import.js
+
+[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/WebReflection/donate)
+
 A dynamic [import()](https://tc39.github.io/proposal-dynamic-import/) polyfill.
 
 Don't miss the [related blog post](https://twitter.com/WebReflection/status/856137076852621312).
